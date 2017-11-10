@@ -2,11 +2,11 @@
 
 ### 如果对您有帮助,请点个星星,感谢
 
-[](/Users/zhaoyongqiang/Desktop/menuItemGIF.gif)
+[](/Users/zhaoyongqiang/Desktop/CLMenuView/menuItem.gif)
 
 #### 快速创建menuItem控件,使用简单,可扩展,默认提供了很多种类型,使用时只需要把需要的枚举类型加到初始化数组即可
 
-###初始化方法
+### 初始化方法
 ```
 lazy var menuItem:CLMenuView = {
 let menuItem = CLMenuView(itemTypes: [.copy,.collect,.reply,.report,.resend,.translate])
@@ -17,7 +17,7 @@ return menuItem
 }()
 ```
 
-###设置menuView的frame
+### 设置menuView的frame
 ```
 let keyWindow = UIApplication.shared.keyWindow
 
@@ -38,7 +38,7 @@ print("=====Index = \(item)")
 }
 ```
 
-###显示于隐藏函数
+### 显示于隐藏函数
 ```
 显示
 menuItem.showMenuView()
