@@ -60,22 +60,14 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
         
         let cell = tableView.cellForRow(at: indexPath)
         
-        
-        if selectedIndex != indexPath.row {
-            
-            let keyWindow = UIApplication.shared.keyWindow
+        guard let keyWindow = UIApplication.shared.delegate?.window else {return}
+        if menuItem.alpha == 0 {
             keyWindow?.addSubview(self.menuItem)
-            let rect = cell?.contentView.convert((cell?.contentView.frame)!, to: keyWindow)
-            
-            menuItem.setTargetRect(targetRect: rect!)
-            
-            menuItem.showMenuView()
-            
-        }else{
-            menuItem.hideMenuView()
         }
-        
-        selectedIndex = indexPath.row
+        let rect = cell?.contentView.convert((cell?.contentView.frame)!, to: keyWindow)
+        menuItem.setTargetRect(targetRect: rect!)
+        menuItem.showMenuItemView(indexPath: indexPath)
+
     }
     
     
@@ -86,7 +78,7 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
-        self.menuItem.hideMenuView()
+        menuItem.hiddenMenuItemView()
         selectedIndex = -1
     }
     
@@ -96,9 +88,8 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
 extension ViewController:ClMenuItemViewDelegate
 {
     
-    func menuItemAction(item: NSInteger) {
-        
-        print("=====Index = \(item)")
+    func menuItemAction(indexPath: IndexPath, itemIndex: Int) {
+        print("=====indexPath = \(indexPath) itemIndex = \(itemIndex)")
     }
     
 }

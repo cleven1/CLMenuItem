@@ -26,32 +26,59 @@ enum menuItemType {
     case select     //选择
     case close      //关闭
     case translate  //翻译
+    case edit
 }
 
 
 /// 点击代理回调
 protocol ClMenuItemViewDelegate:NSObjectProtocol {
     //回调每个item的index
-    func menuItemAction(item:NSInteger)
+    func menuItemAction(indexPath:IndexPath,itemIndex:Int)
 }
 
 
 class CLMenuView: UIView {
     
+    private var isShowMenuView:Bool = false
+    private var preIndexPath:IndexPath = IndexPath(row: 10000, section: 0)
+    private var isFinishedInit:Bool = false
+    
     //MARK:公共属性
+    //代理回调
     weak public var delegate:ClMenuItemViewDelegate?
-
+    // 闭包回调
+    public var clickMenuitemIndex:((_ indexPath:IndexPath,_ itemIndex:Int)->())?
+    
     //显示menuView
-    public func showMenuView(){
-        
+    public func showMenuItemView(indexPath:IndexPath){
+        if indexPath.row != preIndexPath.row {
+            isShowMenuView = true
+        }else if indexPath.row == preIndexPath.row && isShowMenuView == false{
+            isShowMenuView = true
+        }else{
+            isShowMenuView = false
+        }
+        if isShowMenuView {
+            showMenuView()
+        }else{
+            hideMenuView()
+        }
+        preIndexPath = indexPath
+    }
+    
+    /// 隐藏menuView
+    public func hiddenMenuItemView(){
+        if isShowMenuView == false {return}
+        hideMenuView()
+        isShowMenuView = false
+    }
+    
+    private func showMenuView(){
         UIView.animate(withDuration: 0.1) {
-            
             self.alpha = 1.0
         }
     }
-    //隐藏menuView
-    public func hideMenuView(){
-        
+    private func hideMenuView(){
         UIView.animate(withDuration: 0.1, animations: {
             self.alpha = 0.0
         }) { (isComplete) in
@@ -59,7 +86,6 @@ class CLMenuView: UIView {
             self.removeFromSuperview()
         }
     }
-
     //MARK: 私有属性
     fileprivate var menuItems:[menuItemType]?
     private var itemCount:Int = 0
@@ -80,7 +106,7 @@ class CLMenuView: UIView {
     //初始化方法
     init(itemTypes:[menuItemType]) {
         super.init(frame: .zero)
-        
+        self.alpha = 0
         self.menuItems = itemTypes
         self.itemCount = itemTypes.count
         
@@ -90,11 +116,10 @@ class CLMenuView: UIView {
     
     //设置控件frame
     public func setTargetRect(targetRect:CGRect){
-        
         setMenuViewFrame(targetRect:targetRect)
-        
+        if isFinishedInit {return}
         initData()
-        
+        isFinishedInit = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -104,10 +129,10 @@ class CLMenuView: UIView {
     
     @objc func clickItemButton(sender:UIButton){
         
-        delegate?.menuItemAction(item: sender.tag)
-    
+        delegate?.menuItemAction(indexPath: preIndexPath, itemIndex: sender.tag)
+        
+        clickMenuitemIndex?(preIndexPath,sender.tag)
     }
-    
 }
 
 extension CLMenuView
@@ -116,18 +141,15 @@ extension CLMenuView
     private func setUpUI(){
         addSubview(backgroundImageView)
         addSubview(arrowImageView)
-        
     }
     
     private func initData(){
-        
         backgroundImageView.addSubview(containerView)
         containerView.frame = CGRect(x: 0, y: 8, width: backgroundImageView.bounds.size.width, height: backgroundImageView.bounds.size.height)
-
+        
         guard let items = self.menuItems else {
             return
         }
-        
         
         for (index,element) in items.enumerated() {
             
@@ -208,10 +230,13 @@ extension CLMenuView
                 title = "翻译"
                 imageName = "cl_menu_translate"
                 break;
+            case .edit:
+                title = "编辑"
+                imageName = "cl_menu_edit"
             }
             menuBtn.setTitle(title, for: UIControlState.normal)
             menuBtn.setImage(UIImage(named: imageName), for: UIControlState.normal)
-            menuBtn.cl_ButtonPostion(postion: ClImagePosition.top, spacing: 3)
+            menuBtn.cl_ButtonPostion(postion: .top, spacing: 3)
             
             containerView.addSubview(menuBtn)
             menuBtn.frame = CGRect(x: CGFloat(index) * (containerView.bounds.size.width / CGFloat(itemCount)), y: 0, width: containerView.bounds.size.width / CGFloat(itemCount), height: containerView.bounds.size.height)
@@ -257,3 +282,4 @@ extension CLMenuView
         
     }
 }
+
