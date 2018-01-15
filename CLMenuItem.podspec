@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CLMenuItem"
-  s.version      = "1.1.3"
+  s.version      = "1.1.4"
   s.summary      = "menuItem in swift 4"
 
   # This description is used to generate tags and improve search results.

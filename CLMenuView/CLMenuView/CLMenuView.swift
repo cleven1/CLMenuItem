@@ -87,7 +87,7 @@ public class CLMenuView: UIView {
         }
     }
     //MARK: 私有属性
-    fileprivate var menuItems:[menuItemType]?
+    private var menuItems:[menuItemType]?
     private var itemCount:Int = 0
     
     private lazy var containerView:UIView = UIView()
@@ -104,7 +104,7 @@ public class CLMenuView: UIView {
     
     
     //初始化方法
-    init(itemTypes:[menuItemType]) {
+    public init(itemTypes:[menuItemType]) {
         super.init(frame: .zero)
         self.alpha = 0
         self.menuItems = itemTypes
