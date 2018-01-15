@@ -17,14 +17,16 @@ Pod::Spec.new do |s|
 
   s.name         = "CLMenuItem"
   s.version      = "1.1.2"
-  s.summary      = "menuItem"
+  s.summary      = "menuItem in swift 4"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "快速创建menuItem控件,简单集成,使用简单,方便"
+  s.description  =  <<-DESC
+                      快速创建menuItem控件,简单集成,使用简单,方便
+                     DESC
 
   s.homepage     = "https://github.com/cleven1/CLMenuItem"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -103,7 +105,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = "CLMenuView/imageSources/*.png"
+  s.resources = "CLMenuView/*.xcassets"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -114,7 +116,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  s.framework  = "UIKit"
+  s.frameworks = 'UIKit', 'Foundation'
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"
