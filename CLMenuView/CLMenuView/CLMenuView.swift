@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum menuItemType {
+public enum menuItemType {
     case copy       // 复制
     case transmit   //转发
     case collect    //收藏
@@ -31,13 +31,13 @@ enum menuItemType {
 
 
 /// 点击代理回调
-protocol ClMenuItemViewDelegate:NSObjectProtocol {
+public protocol ClMenuItemViewDelegate:NSObjectProtocol {
     //回调每个item的index
     func menuItemAction(indexPath:IndexPath,itemIndex:Int)
 }
 
 
-class CLMenuView: UIView {
+public class CLMenuView: UIView {
     
     private var isShowMenuView:Bool = false
     private var preIndexPath:IndexPath = IndexPath(row: 10000, section: 0)
@@ -122,12 +122,12 @@ class CLMenuView: UIView {
         isFinishedInit = true
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
-    @objc func clickItemButton(sender:UIButton){
+    @objc public func clickItemButton(sender:UIButton){
         
         delegate?.menuItemAction(indexPath: preIndexPath, itemIndex: sender.tag)
         
@@ -135,7 +135,7 @@ class CLMenuView: UIView {
     }
 }
 
-extension CLMenuView
+public extension CLMenuView
 {
     
     private func setUpUI(){
@@ -283,7 +283,7 @@ extension CLMenuView
     }
 }
 
-extension UIColor {
+public extension UIColor {
     
     public class func cl_colorWithHex(hex:UInt32) ->UIColor {
         let r = (hex & 0xFF0000)>>16
@@ -294,7 +294,7 @@ extension UIColor {
     }
 }
 
-extension UIButton{
+public extension UIButton{
     enum ClImagePosition {
         case left    //图片在左，文字在右，默认
         case right   //图片在右，文字在左
