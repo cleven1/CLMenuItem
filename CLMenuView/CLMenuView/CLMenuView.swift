@@ -93,7 +93,7 @@ public class CLMenuView: UIView {
     fileprivate lazy var containerView:UIView = UIView()
     fileprivate lazy var backgroundImageView:UIImageView = {
         let backImageView = UIImageView()
-        let bgImage = UIImage(named: "cl_menu_longpress_bg")
+        let bgImage = UIImage(named: "cl_menu_longpress_bg", in: Bundle(for: CLMenuView.self), compatibleWith: nil)
         let left:Int = Int((bgImage?.size.width)! * 0.5)
         let top:Int = Int((bgImage?.size.height)! * 0.5)
         backImageView.image = bgImage?.stretchableImage(withLeftCapWidth: left, topCapHeight: top)
@@ -235,7 +235,7 @@ public extension CLMenuView
                 imageName = "cl_menu_edit"
             }
             menuBtn.setTitle(title, for: UIControlState.normal)
-            menuBtn.setImage(UIImage(named: imageName), for: UIControlState.normal)
+           menuBtn.setImage(UIImage(named: imageName, in: Bundle(for: CLMenuView.self), compatibleWith: nil), for: .normal)
             menuBtn.cl_ButtonPostion(postion: .top, spacing: 3)
             
             containerView.addSubview(menuBtn)

@@ -18,8 +18,6 @@ class ViewController: UIViewController {
         return menuItem
     }()
     
-    private var selectedIndex:NSInteger = -1
-    
     var tableView:UITableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), style: UITableViewStyle.plain)
     
     override func viewDidLoad() {
@@ -79,7 +77,6 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         menuItem.hiddenMenuItemView()
-        selectedIndex = -1
     }
     
 }
