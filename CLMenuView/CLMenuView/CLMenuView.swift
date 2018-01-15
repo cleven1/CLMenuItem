@@ -305,7 +305,7 @@ public extension UIButton{
         
         let imageWith = self.imageView?.image?.size.width
         let imageHeight = self.imageView?.image?.size.height
-        let labelSize = (self.titleLabel?.text as NSString? )?.size(withAttributes: [NSAttributedStringKey.font:self.titleLabel?.font ?? 12])
+        let labelSize = titleLabel?.attributedText?.size()
         let imageOffsetX = (imageWith! + (labelSize?.width)!) / 2 - imageWith! / 2
         let imageOffsetY = imageHeight! / 2 + spacing / 2
         let labelOffsetX = (imageWith! + (labelSize?.width)! / 2) - (imageWith! + (labelSize?.width)!) / 2
