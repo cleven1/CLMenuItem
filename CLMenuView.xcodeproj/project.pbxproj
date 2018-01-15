@@ -12,8 +12,6 @@
 		E72C49F51F98C69F00E71D72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72C49F31F98C69F00E71D72 /* Main.storyboard */; };
 		E72C49F71F98C69F00E71D72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E72C49F61F98C69F00E71D72 /* Assets.xcassets */; };
 		E72C49FA1F98C69F00E71D72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72C49F81F98C69F00E71D72 /* LaunchScreen.storyboard */; };
-		E72C4A1E1F98C6F600E71D72 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72C4A021F98C6B500E71D72 /* UIButton+Extension.swift */; };
-		E72C4A1F1F98C6F600E71D72 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72C4A031F98C6B500E71D72 /* UIColor+Extension.swift */; };
 		E72C4A201F98C6F600E71D72 /* CLMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72C4A051F98C6B500E71D72 /* CLMenuView.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +23,6 @@
 		E72C49F61F98C69F00E71D72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E72C49F91F98C69F00E71D72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E72C49FB1F98C69F00E71D72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E72C4A021F98C6B500E71D72 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		E72C4A031F98C6B500E71D72 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E72C4A051F98C6B500E71D72 /* CLMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,7 +56,6 @@
 		E72C49EE1F98C69F00E71D72 /* CLMenuView */ = {
 			isa = PBXGroup;
 			children = (
-				E72C4A011F98C6B500E71D72 /* category */,
 				E72C4A041F98C6B500E71D72 /* CLMenuView */,
 				E72C49EF1F98C69F00E71D72 /* AppDelegate.swift */,
 				E72C49F11F98C69F00E71D72 /* ViewController.swift */,
@@ -70,15 +65,6 @@
 				E72C49FB1F98C69F00E71D72 /* Info.plist */,
 			);
 			path = CLMenuView;
-			sourceTree = "<group>";
-		};
-		E72C4A011F98C6B500E71D72 /* category */ = {
-			isa = PBXGroup;
-			children = (
-				E72C4A021F98C6B500E71D72 /* UIButton+Extension.swift */,
-				E72C4A031F98C6B500E71D72 /* UIColor+Extension.swift */,
-			);
-			path = category;
 			sourceTree = "<group>";
 		};
 		E72C4A041F98C6B500E71D72 /* CLMenuView */ = {
@@ -161,8 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E72C4A1E1F98C6F600E71D72 /* UIButton+Extension.swift in Sources */,
-				E72C4A1F1F98C6F600E71D72 /* UIColor+Extension.swift in Sources */,
 				E72C4A201F98C6F600E71D72 /* CLMenuView.swift in Sources */,
 				E72C49F21F98C69F00E71D72 /* ViewController.swift in Sources */,
 				E72C49F01F98C69F00E71D72 /* AppDelegate.swift in Sources */,

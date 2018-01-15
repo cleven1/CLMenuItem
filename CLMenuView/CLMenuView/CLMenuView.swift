@@ -283,3 +283,53 @@ extension CLMenuView
     }
 }
 
+extension UIColor {
+    
+    public class func cl_colorWithHex(hex:UInt32) ->UIColor {
+        let r = (hex & 0xFF0000)>>16
+        let g = (hex & 0x00FF00)>>8
+        let b = (hex & 0x0000FF)
+        
+        return UIColor(red: CGFloat(Float(r)/255.0), green:CGFloat(Float(g)/255.0) , blue: CGFloat(Float(b)/255.0), alpha: 1.0)
+    }
+}
+
+extension UIButton{
+    enum ClImagePosition {
+        case left    //图片在左，文字在右，默认
+        case right   //图片在右，文字在左
+        case top     //图片在上，文字在下
+        case bottom  //图片在下，文字在上
+    }
+    func cl_ButtonPostion(postion:ClImagePosition,spacing:CGFloat){
+        
+        let imageWith = self.imageView?.image?.size.width
+        let imageHeight = self.imageView?.image?.size.height
+        let labelSize = (self.titleLabel?.text as NSString? )?.size(withAttributes: [NSAttributedStringKey.font:self.titleLabel?.font ?? 12])
+        let imageOffsetX = (imageWith! + (labelSize?.width)!) / 2 - imageWith! / 2
+        let imageOffsetY = imageHeight! / 2 + spacing / 2
+        let labelOffsetX = (imageWith! + (labelSize?.width)! / 2) - (imageWith! + (labelSize?.width)!) / 2
+        let labelOffsetY = (labelSize?.height)! / 2 + spacing / 2
+        
+        switch postion {
+        case .left:
+            self.imageEdgeInsets = UIEdgeInsetsMake(0, -spacing/2, 0, spacing/2)
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, spacing/2, 0, -spacing/2)
+            break
+        case .right:
+            self.imageEdgeInsets = UIEdgeInsetsMake(0, (labelSize?.width)! + spacing/2, 0, -((labelSize?.width)! + spacing/2))
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, -(imageHeight! + spacing/2), 0, imageHeight! + spacing/2)
+            break
+        case .top:
+            self.imageEdgeInsets = UIEdgeInsetsMake(-imageOffsetY, imageOffsetX, imageOffsetY, -imageOffsetX)
+            self.titleEdgeInsets = UIEdgeInsetsMake(labelOffsetY, -labelOffsetY - 5, -labelOffsetY, labelOffsetX)
+            break
+        case .bottom:
+            self.imageEdgeInsets = UIEdgeInsetsMake(imageOffsetY, imageOffsetX, -imageOffsetY, -imageOffsetX)
+            self.titleEdgeInsets = UIEdgeInsetsMake(-labelOffsetY, -labelOffsetX, labelOffsetY, labelOffsetX)
+            break
+            
+        }
+        
+    }
+}
