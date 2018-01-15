@@ -39,9 +39,9 @@ public protocol ClMenuItemViewDelegate:NSObjectProtocol {
 
 public class CLMenuView: UIView {
     
-    private var isShowMenuView:Bool = false
-    private var preIndexPath:IndexPath = IndexPath(row: 10000, section: 0)
-    private var isFinishedInit:Bool = false
+    fileprivate var isShowMenuView:Bool = false
+    fileprivate var preIndexPath:IndexPath = IndexPath(row: 10000, section: 0)
+    fileprivate var isFinishedInit:Bool = false
     
     //MARK:公共属性
     //代理回调
@@ -73,12 +73,12 @@ public class CLMenuView: UIView {
         isShowMenuView = false
     }
     
-    private func showMenuView(){
+    fileprivate func showMenuView(){
         UIView.animate(withDuration: 0.1) {
             self.alpha = 1.0
         }
     }
-    private func hideMenuView(){
+    fileprivate func hideMenuView(){
         UIView.animate(withDuration: 0.1, animations: {
             self.alpha = 0.0
         }) { (isComplete) in
@@ -87,11 +87,11 @@ public class CLMenuView: UIView {
         }
     }
     //MARK: 私有属性
-    private var menuItems:[menuItemType]?
-    private var itemCount:Int = 0
+    fileprivate var menuItems:[menuItemType]?
+    fileprivate var itemCount:Int = 0
     
-    private lazy var containerView:UIView = UIView()
-    private lazy var backgroundImageView:UIImageView = {
+    fileprivate lazy var containerView:UIView = UIView()
+    fileprivate lazy var backgroundImageView:UIImageView = {
         let backImageView = UIImageView()
         let bgImage = UIImage(named: "cl_menu_longpress_bg")
         let left:Int = Int((bgImage?.size.width)! * 0.5)
@@ -100,7 +100,7 @@ public class CLMenuView: UIView {
         backImageView.isUserInteractionEnabled = true
         return backImageView
     }()
-    private lazy var arrowImageView:UIImageView = UIImageView()
+    fileprivate lazy var arrowImageView:UIImageView = UIImageView()
     
     
     //初始化方法
@@ -138,12 +138,12 @@ public class CLMenuView: UIView {
 public extension CLMenuView
 {
     
-    private func setUpUI(){
+    fileprivate func setUpUI(){
         addSubview(backgroundImageView)
         addSubview(arrowImageView)
     }
     
-    private func initData(){
+    fileprivate func initData(){
         backgroundImageView.addSubview(containerView)
         containerView.frame = CGRect(x: 0, y: 8, width: backgroundImageView.bounds.size.width, height: backgroundImageView.bounds.size.height)
         
@@ -245,7 +245,7 @@ public extension CLMenuView
         
     }
     
-    private func setMenuViewFrame(targetRect:CGRect){
+    fileprivate func setMenuViewFrame(targetRect:CGRect){
         
         let screenW = UIScreen.main.bounds.size.width
         let screenH = UIScreen.main.bounds.size.height
