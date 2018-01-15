@@ -2,7 +2,13 @@
 
 ### 如果对您有帮助,请点个星星,感谢
 
-[](/Users/zhaoyongqiang/Desktop/CLMenuView/menuItem.gif)
+[](file:/Users/cleven/Desktop/CLMenuItem/menuItem.gif)
+
+###支持cocoaPods
+
+```
+pod 'CLMenuItem'
+```
 
 #### 快速创建menuItem控件,使用简单,可扩展,默认提供了很多种类型,使用时只需要把需要的枚举类型加到初始化数组即可
 
