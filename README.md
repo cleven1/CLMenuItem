@@ -2,7 +2,7 @@
 
 ### 如果对您有帮助,请点个星星,感谢
 
-[](file:/Users/cleven/Desktop/CLMenuItem/menuItem.gif)
+![Markdown](http://i2.bvimg.com/628975/565ae72b72a7450b.gif)
 
 ### 支持cocoaPods
 
