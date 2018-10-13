@@ -333,7 +333,7 @@ public extension UIButton{
         
     }
 }
-extension CLMenuView {
+public extension CLMenuView {
     
     fileprivate func CLBundel() -> Bundle? {
         if let path = Bundle.main.path(forResource: "CLResource", ofType: "bundle") {
