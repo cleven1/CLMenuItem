@@ -281,6 +281,13 @@ public extension CLMenuView
         }
         
     }
+    
+    fileprivate func CLBundel() -> Bundle? {
+        if let path = Bundle.main.path(forResource: "CLResource", ofType: "bundle") {
+            return Bundle(path: path + "/imageSources")
+        }
+        return nil
+    }
 }
 
 public extension UIColor {
@@ -333,12 +340,4 @@ public extension UIButton{
         
     }
 }
-public extension CLMenuView {
-    
-    fileprivate func CLBundel() -> Bundle? {
-        if let path = Bundle.main.path(forResource: "CLResource", ofType: "bundle") {
-            return Bundle(path: path + "/imageSources")
-        }
-        return nil
-    }
-}
+
