@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E455AEC61DB459C47234DB4 /* Pods_CLMenuView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460442D2603892553948876D /* Pods_CLMenuView.framework */; };
+		A3CC87022171A974004A23A1 /* CLResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3CC87012171A974004A23A1 /* CLResource.bundle */; };
 		E72C49F01F98C69F00E71D72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72C49EF1F98C69F00E71D72 /* AppDelegate.swift */; };
 		E72C49F21F98C69F00E71D72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72C49F11F98C69F00E71D72 /* ViewController.swift */; };
 		E72C49F51F98C69F00E71D72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72C49F31F98C69F00E71D72 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 		1C1B2E3DE0280E3E9AB123B2 /* Pods-CLMenuView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLMenuView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CLMenuView/Pods-CLMenuView.release.xcconfig"; sourceTree = "<group>"; };
 		455E1711463BECC5F1D32856 /* Pods-CLMenuView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CLMenuView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CLMenuView/Pods-CLMenuView.debug.xcconfig"; sourceTree = "<group>"; };
 		460442D2603892553948876D /* Pods_CLMenuView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CLMenuView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CC87012171A974004A23A1 /* CLResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CLResource.bundle; sourceTree = "<group>"; };
 		E72C49EC1F98C69F00E71D72 /* CLMenuView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLMenuView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72C49EF1F98C69F00E71D72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E72C49F11F98C69F00E71D72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				E72C4A051F98C6B500E71D72 /* CLMenuView.swift */,
+				A3CC87012171A974004A23A1 /* CLResource.bundle */,
 			);
 			path = CLMenuView;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				E72C49FA1F98C69F00E71D72 /* LaunchScreen.storyboard in Resources */,
 				E72C49F71F98C69F00E71D72 /* Assets.xcassets in Resources */,
+				A3CC87022171A974004A23A1 /* CLResource.bundle in Resources */,
 				E72C49F51F98C69F00E71D72 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,8 +370,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 968Q63C2Z7;
+				DEVELOPMENT_TEAM = K7PT8BFN3J;
 				INFOPLIST_FILE = CLMenuView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleven.CLMenuView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,8 +387,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 968Q63C2Z7;
+				DEVELOPMENT_TEAM = K7PT8BFN3J;
 				INFOPLIST_FILE = CLMenuView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cleven.CLMenuView;
 				PRODUCT_NAME = "$(TARGET_NAME)";

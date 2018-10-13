@@ -93,7 +93,7 @@ public class CLMenuView: UIView {
     fileprivate lazy var containerView:UIView = UIView()
     fileprivate lazy var backgroundImageView:UIImageView = {
         let backImageView = UIImageView()
-        let bgImage = UIImage(named: "cl_menu_longpress_bg", in: Bundle(for: CLMenuView.self), compatibleWith: nil)
+        let bgImage = UIImage(named: "cl_menu_longpress_bg", in: CLBundel(), compatibleWith: nil)
         let left:Int = Int((bgImage?.size.width)! * 0.5)
         let top:Int = Int((bgImage?.size.height)! * 0.5)
         backImageView.image = bgImage?.stretchableImage(withLeftCapWidth: left, topCapHeight: top)
@@ -235,7 +235,7 @@ public extension CLMenuView
                 imageName = "cl_menu_edit"
             }
             menuBtn.setTitle(title, for: UIControlState.normal)
-           menuBtn.setImage(UIImage(named: imageName, in: Bundle(for: CLMenuView.self), compatibleWith: nil), for: .normal)
+           menuBtn.setImage(UIImage(named: imageName, in: CLBundel(), compatibleWith: nil), for: .normal)
             menuBtn.cl_ButtonPostion(postion: .top, spacing: 3)
             
             containerView.addSubview(menuBtn)
@@ -271,12 +271,12 @@ public extension CLMenuView
         if frame.origin.y > targetRect.origin.y {
             //箭头向上
             backgroundImageView.frame = CGRect(x: 0, y: arrowH, width: menuW, height: menuH - arrowH)
-            arrowImageView.image = UIImage(named: "cl_menu_longpress_up_arrow", in: Bundle(for: CLMenuView.self), compatibleWith: nil)
+            arrowImageView.image = UIImage(named: "cl_menu_longpress_up_arrow", in: CLBundel(), compatibleWith: nil)
             arrowImageView.frame = CGRect(x: arrowX, y: 0, width: arrowW, height: arrowH)
         }else{
             //箭头向下
             backgroundImageView.frame = CGRect(x: 0, y: 0, width: menuW, height: menuH - arrowH)
-            arrowImageView.image = UIImage(named: "cl_menu_longpress_down_arrow", in: Bundle(for: CLMenuView.self), compatibleWith: nil)
+            arrowImageView.image = UIImage(named: "cl_menu_longpress_down_arrow", in: CLBundel(), compatibleWith: nil)
             arrowImageView.frame = CGRect(x: arrowX, y: menuH - arrowH, width: arrowW, height: arrowH)
         }
         
@@ -285,7 +285,7 @@ public extension CLMenuView
 
 public extension UIColor {
     
-    public class func cl_colorWithHex(hex:UInt32) ->UIColor {
+    fileprivate class func cl_colorWithHex(hex:UInt32) ->UIColor {
         let r = (hex & 0xFF0000)>>16
         let g = (hex & 0x00FF00)>>8
         let b = (hex & 0x0000FF)
@@ -295,13 +295,13 @@ public extension UIColor {
 }
 
 public extension UIButton{
-    enum ClImagePosition {
+   fileprivate enum ClImagePosition {
         case left    //图片在左，文字在右，默认
         case right   //图片在右，文字在左
         case top     //图片在上，文字在下
         case bottom  //图片在下，文字在上
     }
-    func cl_ButtonPostion(postion:ClImagePosition,spacing:CGFloat){
+   fileprivate func cl_ButtonPostion(postion:ClImagePosition,spacing:CGFloat){
         
         let imageWith = self.imageView?.image?.size.width
         let imageHeight = self.imageView?.image?.size.height
@@ -331,5 +331,14 @@ public extension UIButton{
             
         }
         
+    }
+}
+extension CLMenuView {
+    
+    fileprivate func CLBundel() -> Bundle? {
+        if let path = Bundle.main.path(forResource: "CLResource", ofType: "bundle") {
+            return Bundle(path: path + "/imageSources")
+        }
+        return nil
     }
 }
