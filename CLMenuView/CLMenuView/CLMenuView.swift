@@ -42,7 +42,7 @@ public class CLMenuView: UIView {
     fileprivate var isShowMenuView:Bool = false
     fileprivate var preIndexPath:IndexPath = IndexPath(row: 10000, section: 0)
     fileprivate var isFinishedInit:Bool = false
-    fileprivate let clBundlePath = Bundle.main.path(forResource: "CLResource", ofType: "bundle")
+    fileprivate static let clBundlePath = Bundle.main.path(forResource: "CLResource", ofType: "bundle")
     
     //MARK:公共属性
     //代理回调
@@ -94,7 +94,7 @@ public class CLMenuView: UIView {
     fileprivate lazy var containerView:UIView = UIView()
     fileprivate lazy var backgroundImageView:UIImageView = {
         let backImageView = UIImageView()
-        let bgImage = UIImage(named: "cl_menu_longpress_bg", in: Bundle(path: (clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
+        let bgImage = UIImage(named: "cl_menu_longpress_bg", in: Bundle(path: (CLMenuView.clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
         let left:Int = Int((bgImage?.size.width)! * 0.5)
         let top:Int = Int((bgImage?.size.height)! * 0.5)
         backImageView.image = bgImage?.stretchableImage(withLeftCapWidth: left, topCapHeight: top)
@@ -236,7 +236,7 @@ public extension CLMenuView
                 imageName = "cl_menu_edit"
             }
             menuBtn.setTitle(title, for: UIControlState.normal)
-           menuBtn.setImage(UIImage(named: imageName, in: Bundle(path: (clBundlePath ?? "") + "/imageSources"), compatibleWith: nil), for: .normal)
+            menuBtn.setImage(UIImage(named: imageName, in: Bundle(path: (CLMenuView.clBundlePath ?? "") + "/imageSources"), compatibleWith: nil), for: .normal)
             menuBtn.cl_ButtonPostion(postion: .top, spacing: 3)
             
             containerView.addSubview(menuBtn)
@@ -272,12 +272,12 @@ public extension CLMenuView
         if frame.origin.y > targetRect.origin.y {
             //箭头向上
             backgroundImageView.frame = CGRect(x: 0, y: arrowH, width: menuW, height: menuH - arrowH)
-            arrowImageView.image = UIImage(named: "cl_menu_longpress_up_arrow", in: Bundle(path: (clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
+            arrowImageView.image = UIImage(named: "cl_menu_longpress_up_arrow", in: Bundle(path: (CLMenuView.clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
             arrowImageView.frame = CGRect(x: arrowX, y: 0, width: arrowW, height: arrowH)
         }else{
             //箭头向下
             backgroundImageView.frame = CGRect(x: 0, y: 0, width: menuW, height: menuH - arrowH)
-            arrowImageView.image = UIImage(named: "cl_menu_longpress_down_arrow", in: Bundle(path: (clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
+            arrowImageView.image = UIImage(named: "cl_menu_longpress_down_arrow", in: Bundle(path: (CLMenuView.clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
             arrowImageView.frame = CGRect(x: arrowX, y: menuH - arrowH, width: arrowW, height: arrowH)
         }
         
