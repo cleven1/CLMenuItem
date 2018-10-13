@@ -42,7 +42,6 @@ public class CLMenuView: UIView {
     fileprivate var isShowMenuView:Bool = false
     fileprivate var preIndexPath:IndexPath = IndexPath(row: 10000, section: 0)
     fileprivate var isFinishedInit:Bool = false
-    fileprivate static let clBundlePath = Bundle.main.path(forResource: "CLResource", ofType: "bundle")
     
     //MARK:公共属性
     //代理回调
@@ -94,7 +93,7 @@ public class CLMenuView: UIView {
     fileprivate lazy var containerView:UIView = UIView()
     fileprivate lazy var backgroundImageView:UIImageView = {
         let backImageView = UIImageView()
-        let bgImage = UIImage(named: "cl_menu_longpress_bg", in: Bundle(path: (CLMenuView.clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
+        let bgImage = CLMenuView.bundleImageNamed("cl_menu_longpress_bg")
         let left:Int = Int((bgImage?.size.width)! * 0.5)
         let top:Int = Int((bgImage?.size.height)! * 0.5)
         backImageView.image = bgImage?.stretchableImage(withLeftCapWidth: left, topCapHeight: top)
@@ -236,7 +235,7 @@ public extension CLMenuView
                 imageName = "cl_menu_edit"
             }
             menuBtn.setTitle(title, for: UIControlState.normal)
-            menuBtn.setImage(UIImage(named: imageName, in: Bundle(path: (CLMenuView.clBundlePath ?? "") + "/imageSources"), compatibleWith: nil), for: .normal)
+            menuBtn.setImage(CLMenuView.bundleImageNamed(imageName), for: .normal)
             menuBtn.cl_ButtonPostion(postion: .top, spacing: 3)
             
             containerView.addSubview(menuBtn)
@@ -272,12 +271,12 @@ public extension CLMenuView
         if frame.origin.y > targetRect.origin.y {
             //箭头向上
             backgroundImageView.frame = CGRect(x: 0, y: arrowH, width: menuW, height: menuH - arrowH)
-            arrowImageView.image = UIImage(named: "cl_menu_longpress_up_arrow", in: Bundle(path: (CLMenuView.clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
+            arrowImageView.image = CLMenuView.bundleImageNamed("cl_menu_longpress_up_arrow")
             arrowImageView.frame = CGRect(x: arrowX, y: 0, width: arrowW, height: arrowH)
         }else{
             //箭头向下
             backgroundImageView.frame = CGRect(x: 0, y: 0, width: menuW, height: menuH - arrowH)
-            arrowImageView.image = UIImage(named: "cl_menu_longpress_down_arrow", in: Bundle(path: (CLMenuView.clBundlePath ?? "") + "/imageSources"), compatibleWith: nil)
+            arrowImageView.image = CLMenuView.bundleImageNamed("cl_menu_longpress_down_arrow")
             arrowImageView.frame = CGRect(x: arrowX, y: menuH - arrowH, width: arrowW, height: arrowH)
         }
         
@@ -297,13 +296,13 @@ public extension UIColor {
 }
 
 public extension UIButton{
-   fileprivate enum ClImagePosition {
+    fileprivate enum ClImagePosition {
         case left    //图片在左，文字在右，默认
         case right   //图片在右，文字在左
         case top     //图片在上，文字在下
         case bottom  //图片在下，文字在上
     }
-   fileprivate func cl_ButtonPostion(postion:ClImagePosition,spacing:CGFloat){
+    fileprivate func cl_ButtonPostion(postion:ClImagePosition,spacing:CGFloat){
         
         let imageWith = self.imageView?.image?.size.width
         let imageHeight = self.imageView?.image?.size.height
@@ -336,3 +335,17 @@ public extension UIButton{
     }
 }
 
+public extension CLMenuView {
+    
+    fileprivate static func bundleImageNamed(_ imageName:String) -> UIImage? {
+        let image = UIImage(named: "imageSources/" + imageName, in: Bundle.clBundle, compatibleWith: nil)
+        return image
+    }
+}
+public extension Bundle {
+    // 定义一个静态变量xxxBundle，用于获取项目本地的Bundle文件：XXX.bundle。
+    fileprivate static var clBundle: Bundle{
+        let bundle:Bundle = Bundle.init(path:Bundle.init(for: CLMenuView.self).path(forResource: "CLResource", ofType: "bundle")!)!
+        return bundle
+    }
+}
