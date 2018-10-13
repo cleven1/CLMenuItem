@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CLMenuItem"
-  s.version      = "1.0.2"
-  s.summary      = "menuItem in swift 4"
+  s.version      = "1.0.3"
+  s.summary      = "menuItem in swift 3"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -105,7 +105,7 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  s.resources = "CLMenuView/*.xcassets"
+  s.resources = "CLMenuView/CLMenuView/*.bundle"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
