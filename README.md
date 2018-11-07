@@ -2,7 +2,7 @@
 
 ### 如果对您有帮助,请点个星星,感谢
 
-![Markdown](http://i2.bvimg.com/628975/565ae72b72a7450b.gif)
+![Markdown](./menuItem.gif)
 
 ### 支持cocoaPods
 
