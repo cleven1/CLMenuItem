@@ -304,13 +304,13 @@ public extension UIButton{
     }
     fileprivate func cl_ButtonPostion(postion:ClImagePosition,spacing:CGFloat){
         
-        let imageWith = self.imageView?.image?.size.width
-        let imageHeight = self.imageView?.image?.size.height
-        let labelSize = titleLabel?.attributedText?.size()
-        let imageOffsetX = (imageWith! + (labelSize?.width)!) / 2 - imageWith! / 2
-        let imageOffsetY = imageHeight! / 2 + spacing / 2
-        let labelOffsetX = (imageWith! + (labelSize?.width)! / 2) - (imageWith! + (labelSize?.width)!) / 2
-        let labelOffsetY = (labelSize?.height)! / 2 + spacing / 2
+        let imageWith = self.imageView?.image?.size.width ?? 0
+        let imageHeight = self.imageView?.image?.size.height ?? 0
+        let labelSize = titleLabel?.attributedText?.size() ?? CGSize.zero
+        let imageOffsetX = (imageWith + labelSize.width) / 2 - imageWith / 2
+        let imageOffsetY = imageHeight / 2 + spacing / 2
+        let labelOffsetX = (imageWith + labelSize.width / 2) - (imageWith + labelSize.width) / 2
+        let labelOffsetY = labelSize.height / 2 + spacing / 2
         
         switch postion {
         case .left:
@@ -318,8 +318,8 @@ public extension UIButton{
             self.titleEdgeInsets = UIEdgeInsetsMake(0, spacing/2, 0, -spacing/2)
             break
         case .right:
-            self.imageEdgeInsets = UIEdgeInsetsMake(0, (labelSize?.width)! + spacing/2, 0, -((labelSize?.width)! + spacing/2))
-            self.titleEdgeInsets = UIEdgeInsetsMake(0, -(imageHeight! + spacing/2), 0, imageHeight! + spacing/2)
+            self.imageEdgeInsets = UIEdgeInsetsMake(0, labelSize.width + spacing/2, 0, -(labelSize.width + spacing/2))
+            self.titleEdgeInsets = UIEdgeInsetsMake(0, -(imageHeight + spacing/2), 0, imageHeight + spacing/2)
             break
         case .top:
             self.imageEdgeInsets = UIEdgeInsetsMake(-imageOffsetY, imageOffsetX, imageOffsetY, -imageOffsetX)
